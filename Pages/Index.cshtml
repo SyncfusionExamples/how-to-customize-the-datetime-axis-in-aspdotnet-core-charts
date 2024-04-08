@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    List<ChartData> Data = new List<ChartData>()
+    {
+        new ChartData { Date = new DateTime(2016, 3, 07), Temp = 6.3 },
+        new ChartData { Date = new DateTime(2016, 3, 10), Temp = 10.3 },
+        new ChartData { Date = new DateTime(2016, 4, 15), Temp = 13.3 },
+        new ChartData { Date = new DateTime(2016, 5, 10), Temp = 18.0 },
+        new ChartData { Date = new DateTime(2016, 5, 12), Temp = 22.0 },
+        new ChartData { Date = new DateTime(2016, 6, 17), Temp = 19.8 },
+        new ChartData { Date = new DateTime(2016, 7, 13), Temp = 18.1 },
+        new ChartData { Date = new DateTime(2016, 8, 11), Temp = 13.1 },
+        new ChartData { Date = new DateTime(2016, 9, 16), Temp = 4.1 }
+    };
+}
+
+<ejs-chart id="chart" title="Weather Statistics">
+    <e-chart-primaryxaxis valueType=DateTimeCategory
+                          intervalType=Months
+                          edgeLabelPlacement=Shift
+                          labelFormat="dd-EEE-MMM"
+                          rangePadding=Additional
+                          title="Month"></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis title="Temperature"
+                          labelFormat="{value}°C"></e-chart-primaryyaxis>
+    <e-series-collection>
+        <e-series type=Line
+                  dataSource="Data"
+                  xName="Date"
+                  yName="Temp">
+                  <e-series-marker visible=true></e-series-marker>
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
